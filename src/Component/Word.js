@@ -1,55 +1,102 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import {
+  RxLetterCaseUppercase,
+  RxLetterCaseLowercase,
+  RxFontItalic,
+  RxFontBold,
+  RxLetterCaseCapitalize,
+  RxReset,
+} from "react-icons/rx";
 
 function Word() {
   const [inputText, setInputText] = useState("");
+  const [fontStyle, setFontStyle] = useState(null);
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
 
   const countWords = () => {
-    const words = inputText.trim().split(/\s+/);
-    return words.length;
+    if (inputText?.length > 0) {
+      const words = inputText.trim().split(/\s+/);
+      return words.length;
+    } else return 0;
+  };
+
+  const handleStyle = (style) => {
+    setFontStyle(style);
   };
 
   return (
     <>
       <div className="h-screen w-auto  flex flex-col justify-center items-center p-2">
-        <Link className="items-start w-full" to="/">
-          <button
-            class="cursor-pointer duration-200 hover:scale-125 active:scale-100"
-            title="Go Back"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50px"
-              height="50px"
-              viewBox="0 0 24 24"
-              class="stroke-blue-300"
-            >
-              <path
-                stroke-linejoin="round"
-                stroke-linecap="round"
-                stroke-width="1.5"
-                d="M11 6L5 12M5 12L11 18M5 12H19"
-              ></path>
-            </svg>
-          </button>
-        </Link>
         <h1 className="text-4xl font-medium mb-4">Word Counter</h1>
-        <div className="px-5 w-full">
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => {
+              handleStyle("uppercase");
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxLetterCaseUppercase />
+          </button>
+          <button
+            onClick={() => {
+              handleStyle("lowercase");
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxLetterCaseLowercase />
+          </button>
+          <button
+            onClick={() => {
+              handleStyle("capitalize");
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxLetterCaseCapitalize />
+          </button>
+          <button
+            onClick={() => {
+              handleStyle("italic");
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxFontItalic />
+          </button>
+          <button
+            onClick={() => {
+              handleStyle("font-bold");
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxFontBold />
+          </button>
+          <button
+            onClick={() => {
+              handleStyle(null);
+            }}
+            className="bg-slate-300 p-2 rounded border border-slate-600"
+          >
+            <RxReset />
+          </button>
+        </div>
+        <div className="px-5 w-full mt-4">
           <textarea
             rows="6"
             value={inputText}
             onChange={handleInputChange}
             placeholder="Type here..."
-            className="p-3 border border-black w-full"
+            className={` ${fontStyle} p-3 border border-black w-full`}
           />
         </div>
         <p className="text-xl">
           Word Count :{" "}
           <span className="text-2xl font-semibold">{countWords()} </span>{" "}
+        </p>
+        <p className="text-xl">
+          Character Count :{" "}
+          <span className="text-2xl font-semibold">{inputText?.length} </span>{" "}
         </p>
       </div>
     </>

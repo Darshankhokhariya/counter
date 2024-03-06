@@ -24,13 +24,15 @@ const Image = () => {
   const convertToPDF = () => {
     // Create a new jsPDF instance
     const pdf = new jsPDF();
+    var width = pdf.internal.pageSize.getWidth() - 20;
+    var height = pdf.internal.pageSize.getHeight() - 50;
 
     // Iterate through each image and add it to the PDF
     images.forEach((image, index) => {
       if (index > 0) {
         pdf.addPage(); // Add a new page for each image, except the first one
       }
-      pdf.addImage(image.preview, "JPEG", 10, 10, 190, 150);
+      pdf.addImage(image.preview, "JPEG", 10, 25, width, height);
     });
 
     // Save the PDF
@@ -50,39 +52,28 @@ const Image = () => {
 
   return (
     <>
-      <Link className="items-start justify-start w-full " to="/">
-        <button
-          class="cursor-pointer duration-200 hover:scale-125 active:scale-100 m-3"
-          title="Go Back"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50px"
-            height="50px"
-            viewBox="0 0 24 24"
-            class="stroke-blue-300"
-          >
-            <path
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke-width="1.5"
-              d="M11 6L5 12M5 12L11 18M5 12H19"
-            ></path>
-          </svg>
-        </button>
-      </Link>
-      <div className="h-screen flex flex-col justify-center items-center gap-4">
-        <div {...getRootProps()} className="dropzone">
-          <input {...getInputProps()} />
-          <p>
-            Drag & drop some JPG files here, or <br />{" "}
-            <span className="text-blue-500"> click to select files </span>
-          </p>
+      <div className=" flex flex-col justify-center items-center gap-4">
+        <div class="flex w-full  items-center justify-center bg-grey-lighter">
+          <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-sky-500">
+            <svg
+              class="w-8 h-8"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+            </svg>
+            <span class="mt-2 text-base leading-normal">Select a file</span>
+            <input {...getRootProps()} class="hidden" />
+          </label>
         </div>
-        <div className="image-preview px-2 w-full">
+        <div>
+          <p>Select your files from here</p>
+        </div>
+        <div className="image-preview px-2 flex justify-center items-center gap-2 w-full">
           {images.map((image) => (
             <img
-              className="w-full"
+              className="w-[200px] h-[200px] object-cover"
               key={image.name}
               src={image.preview}
               alt={image.name}
