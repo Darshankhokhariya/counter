@@ -7,6 +7,7 @@ import "./App.css";
 import ImageQualityReducer from "./Component/ImageReducer";
 import ImageToText from "./Component/ImageToText";
 import { Toaster } from "react-hot-toast";
+import SignatureDownloader from "./Component/Signature";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/wordcounters" element={<Word />} />
         <Route path="/imagereducer" element={<ImageQualityReducer />} />
         <Route path="/imagetotext" element={<ImageToText />} />
+        <Route path="/signaturedownloader" element={<SignatureDownloader />} />
       </Routes>
     </>
   );

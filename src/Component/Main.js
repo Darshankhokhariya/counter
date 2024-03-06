@@ -9,7 +9,7 @@ function Main() {
           <Link to="/wordcounters">
             <div className="p-4 max-w-[300px] min-w-[300px]  border border-indigo-300 rounded-2xl  hover:shadow-xl hover:shadow-indigo-50 flex flex-col items-center">
               <img
-                src="https://play-lh.googleusercontent.com/r4X08bGVHtK2ff-LPPvbpSoL9vtPf3kWBU-PGnmt3Qu0m-R7dwdiYyBMzN5kwm9ZRA"
+                src="https://play-lh.googleusercontent.com/pp4VDKFCsKTr_hchVZJLApNTqQMm_W3u_w4usCxF3ho7q2jRoDY7SiAmsrPkRxUhHQ"
                 class="shadow rounded-lg overflow-hidden border"
               />
               <div class="mt-8">
@@ -49,7 +49,7 @@ function Main() {
               </div>
             </div>
           </Link>
-          <Link to="/imagereducer">
+          <Link to="/signaturedownloader">
             <div className="p-4 max-w-[300px] min-w-[300px]  border border-indigo-300 rounded-2xl  hover:shadow-xl hover:shadow-indigo-50 flex flex-col items-center">
               <img
                 src="https://avatars.mds.yandex.net/i?id=82a45cf254e5a38a19f286b747b1a680d5273493-10640295-images-thumbs&n=13"
